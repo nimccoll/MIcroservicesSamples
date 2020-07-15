@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApimServiceName": {
+      "type": "string"
+    },
+    "PolicyXMLBaseUrl": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "properties": {
+        "description": "nimccollftacalcfunctions",
+        "resourceId": "https://management.azure.com/subscriptions/b0ea2245-2d2d-4ba3-baa5-57d0ebfb643a/resourceGroups/nimccollfta-rg/providers/Microsoft.Web/sites/nimccollftacalcfunctions",
+        "credentials": {
+          "header": {
+            "x-functions-key": [
+              "{{nimccollftacalcfunctions-key}}"
+            ]
+          }
+        },
+        "url": "https://nimccollftacalcfunctions.azurewebsites.net/api",
+        "protocol": "http"
+      },
+      "name": "[concat(parameters('ApimServiceName'), '/nimccollftacalcfunctions')]",
+      "type": "Microsoft.ApiManagement/service/backends",
+      "apiVersion": "2019-01-01"
+    }
+  ]
+}
